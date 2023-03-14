@@ -1,9 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import StartGameScreen from "./screens/StartGameScreen";
 import GameOverScreen from "./screens/GameOverScreen";
+import GameScreen from "./screens/GameScreen";
 import { LinearGradient } from "expo-linear-gradient";
+import Colors from "./utils/constants/colors";
 
 export default function App() {
   const [gameState, setGameState] = useState("start");
@@ -17,23 +19,31 @@ export default function App() {
   }
 
   return (
-    <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.container}>
-      <StatusBar style="dark" />
+    <LinearGradient
+      colors={[Colors.primary700, Colors.accent500]}
+      style={styles.container}
+    >
+      <StatusBar style="light" />
       <ImageBackground
         style={styles.container}
         source={require("./assets/images/background.png")}
         resizeMode={"cover"}
         imageStyle={styles.backgroundImage}
       >
-        {gameState === "start" && (
-          <StartGameScreen changeState={stageChangeHandler} />
-        )}
-        {gameState === "game" && (
-          <GameScreen changeState={stageChangeHandler} number={enteredNumber} />
-        )}
-        {gameState === "result" && (
-          <GameOverScreen changeState={stageChangeHandler} />
-        )}
+        <SafeAreaView style={styles.container}>
+          {gameState === "start" && (
+            <StartGameScreen changeState={stageChangeHandler} />
+          )}
+          {gameState === "game" && (
+            <GameScreen
+              changeState={stageChangeHandler}
+              number={enteredNumber}
+            />
+          )}
+          {gameState === "result" && (
+            <GameOverScreen changeState={stageChangeHandler} />
+          )}
+        </SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );
