@@ -37,7 +37,7 @@ export default function App() {
           {gameState === "game" && (
             <GameScreen
               changeState={stageChangeHandler}
-              number={enteredNumber}
+              userNumber={enteredNumber}
             />
           )}
           {gameState === "result" && (

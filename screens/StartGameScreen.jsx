@@ -10,8 +10,7 @@ export default function StartGameScreen({ changeState }) {
 
   return (
     <View style={styles.startScreenWrapper}>
-      {/* <Title>Guess My Number</Title> */}
-      <Text style={styles.titleContainer}>Guess My Number</Text>
+      <Title style={styles.titleContainer}>Guess My Number</Title>
 
       <InputNumber startGame={handleStartGame} />
     </View>
