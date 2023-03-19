@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import NumberContainer from "../components/game/NumberContainer";
+import Card from "../components/shared/Card";
+import InstructionText from "../components/shared/InstructionText";
 import PrimaryButton from "../components/shared/PrimaryButton";
 import Title from "../components/shared/Title";
 
@@ -64,20 +67,22 @@ function GameScreen({ changeState, userNumber }) {
 
   return (
     <View style={styles.gameContainer}>
-      <Title>Oponent's Guess</Title>
+      <Title style={styles.w_90}>Oponent's Guess</Title>
 
-      <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Title>Higher or lower ?</Title>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-            +
-          </PrimaryButton>
+      <NumberContainer style={styles.w_90}>{currentGuess}</NumberContainer>
+      <Card style={[styles.card, styles.w_90]}>
+        <View>
+          <InstructionText>Higher or lower ?</InstructionText>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="md-remove" size={24} />
+            </PrimaryButton>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="md-add" size={24} />
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -88,14 +93,21 @@ const styles = StyleSheet.create({
   gameContainer: {
     flex: 1,
     padding: 24,
-    marginVertical: 25,
+    marginVertical: 50,
+    alignItems: "center",
   },
   buttonContainer: {
-    // height: 60,
+    height: 60,
     marginVertical: 20,
-
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
+    width: "90%",
+  },
+  w_90: {
+    width: "90%",
+  },
+  card: {
+    paddingTop: 40,
   },
 });

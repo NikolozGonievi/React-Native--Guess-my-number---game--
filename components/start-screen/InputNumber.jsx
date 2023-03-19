@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
 import Colors from "../../utils/constants/colors";
+import Card from "../shared/Card";
+import InstructionText from "../shared/InstructionText";
 import PrimaryButton from "../shared/PrimaryButton";
 
 export default function InputNumber({ startGame }) {
@@ -24,16 +26,12 @@ export default function InputNumber({ startGame }) {
   }
 
   function textChangeHandler(enteredNumber) {
-    // if (enteredNumber === "") {
-    //   setEnteredNumber("");
-    // } else if (enteredNumber > 0) {
     setEnteredNumber(enteredNumber);
-    // }
   }
 
   return (
-    <View style={styles.numberInputContrainer}>
-      <Text style={styles.numberInputTitle}>Enter a Number</Text>
+    <Card>
+      <InstructionText>Enter a Number</InstructionText>
       <View>
         <TextInput
           keyboardType="number-pad"
@@ -49,28 +47,11 @@ export default function InputNumber({ startGame }) {
         <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
         <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
       </View>
-    </View>
+    </Card>
   );
 }
 
 const styles = StyleSheet.create({
-  numberInputContrainer: {
-    borderRadius: 8,
-    backgroundColor: Colors.primary800,
-    padding: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 24,
-    elevation: 8,
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
-  },
-  numberInputTitle: {
-    fontSize: 20,
-    textAlign: "center",
-  },
   numberInput: {
     height: 50,
     width: 50,

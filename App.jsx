@@ -14,7 +14,7 @@ export default function App() {
   function stageChangeHandler(nextState, number) {
     setGameState(nextState);
     if (number) {
-      setEnteredNumber(number);
+      setEnteredNumber(parseInt(number));
     }
   }
 
