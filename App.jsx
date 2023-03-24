@@ -6,10 +6,20 @@ import GameOverScreen from "./screens/GameOverScreen";
 import GameScreen from "./screens/GameScreen";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "./utils/constants/colors";
+import { useFonts } from "expo-font";
 
 export default function App() {
   const [gameState, setGameState] = useState("start");
   const [enteredNumber, setEnteredNumber] = useState(null);
+
+  const [fontsLoaded] = useFonts({
+    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <></>;
+  }
 
   function stageChangeHandler(nextState, number) {
     setGameState(nextState);

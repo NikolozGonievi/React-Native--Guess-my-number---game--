@@ -28,11 +28,5 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 40,
     marginHorizontal: 80,
-    borderWidth: 2,
-    // borderColor: Colors.accent500,
-    // color: Colors.accent500,
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
   },
 });
