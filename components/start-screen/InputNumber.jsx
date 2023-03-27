@@ -44,8 +44,12 @@ export default function InputNumber({ startGame }) {
         />
       </View>
       <View style={styles.buttonsContainer}>
-        <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
-        <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+        <PrimaryButton onPress={resetHandler} style={{ flex: 1 }}>
+          Reset
+        </PrimaryButton>
+        <PrimaryButton onPress={confirmHandler} style={{ flex: 1 }}>
+          Confirm
+        </PrimaryButton>
       </View>
     </Card>
   );

@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, View, Text } from "react-native";
 import Colors from "../../utils/constants/colors";
 
-export default function PrimaryButton({ children, onPress }) {
+export default function PrimaryButton({ children, onPress, style }) {
   return (
-    <View style={styles.buttonOuterContainer}>
+    <View style={[styles.buttonOuterContainer, style]}>
       <Pressable
         onPress={onPress}
         style={(pressData) =>
@@ -22,13 +22,12 @@ export default function PrimaryButton({ children, onPress }) {
 const styles = StyleSheet.create({
   buttonOuterContainer: {
     borderRadius: 28,
-    flex: 1,
     margin: 4,
     overflow: "hidden",
   },
   buttonInnerContainer: {
     backgroundColor: Colors.primary500,
-    paddingHorizontal: 16,
+    paddingHorizontal: 35,
     paddingVertical: 10,
     elevation: 2,
   },
