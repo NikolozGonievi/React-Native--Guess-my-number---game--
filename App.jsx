@@ -11,6 +11,7 @@ import { useFonts } from "expo-font";
 export default function App() {
   const [gameState, setGameState] = useState("start");
   const [enteredNumber, setEnteredNumber] = useState(null);
+  const [roundsNumber, setRoundsNumber] = useState(null);
 
   const [fontsLoaded] = useFonts({
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
@@ -23,9 +24,17 @@ export default function App() {
 
   function stageChangeHandler(nextState, number) {
     setGameState(nextState);
+    if (nextState === "start") {
+      setEnteredNumber(null);
+      setRoundsNumber(null);
+    }
     if (number) {
       setEnteredNumber(parseInt(number));
     }
+  }
+
+  function getRoundsNumber(amountOfRounds) {
+    setRoundsNumber(amountOfRounds);
   }
 
   return (
@@ -48,10 +57,15 @@ export default function App() {
             <GameScreen
               changeState={stageChangeHandler}
               userNumber={enteredNumber}
+              getRoundsNumber={getRoundsNumber}
             />
           )}
           {gameState === "result" && (
-            <GameOverScreen changeState={stageChangeHandler} />
+            <GameOverScreen
+              changeState={stageChangeHandler}
+              userNumber={enteredNumber}
+              roundsNumber={roundsNumber}
+            />
           )}
         </SafeAreaView>
       </ImageBackground>

@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import PrimaryButton from "../components/shared/PrimaryButton";
 import Title from "../components/shared/Title";
 import Colors from "../utils/constants/colors";
 
-function GameOverScreen({ changeState, numberOfRounds, userNumber }) {
+function GameOverScreen({ changeState, userNumber, roundsNumber }) {
+  useEffect(() => {}, [changeState, userNumber, roundsNumber]);
+
+  function restartGameHander() {
+    changeState("start");
+  }
+
   return (
     <View style={styles.rootContainer}>
       <Title>GAME OVER</Title>
@@ -15,11 +22,13 @@ function GameOverScreen({ changeState, numberOfRounds, userNumber }) {
       </View>
 
       <Text style={styles.summaryText}>
-        Your phone needed <Text style={styles.highlightText}>X </Text>
-        rounds to guess the number <Text style={styles.highlightText}>Y</Text>
+        Your phone needed{" "}
+        <Text style={styles.highlightText}>{roundsNumber} </Text>
+        rounds to guess the number{" "}
+        <Text style={styles.highlightText}>{userNumber}</Text>
       </Text>
 
-      <PrimaryButton>Start New Game</PrimaryButton>
+      <PrimaryButton onPress={restartGameHander}>Start New Game</PrimaryButton>
     </View>
   );
 }
